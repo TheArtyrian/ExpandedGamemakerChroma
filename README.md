@@ -5,10 +5,10 @@
 * The original can be found [HERE](https://github.com/razerofficial/GameMakerChromaExtension).
 
 * Also, **THIS REPOSITORY IS A SIDE PROJECT OF MINE, AND IS NOT A PRIORITY TO UPDATE ATM**.
-   ** I originally updated this for my own personal use, but I thought there might be someone interested in putting Razer support in their own GameMaker project. The system I made for my own game is modular enough to simply tear out a copy and put it in another project, so I thought I'd put it here. It's a bit of a fixer-upper, but I'm going to work on that. :P
+   * I originally updated this for my own personal use, but I thought there might be someone interested in putting Razer support in their own GameMaker project. The system I made for my own game is modular enough to simply tear out a copy and put it in another project, so I thought I'd put it here. It's a bit of a fixer-upper, but I'm going to work on that. :P
 
 * This extension now relies on a seperate object to help it run properly, fittingly named `RGBCHROMA`.
-   ** I've made it so everything in this project shouldn't interfere with your own project when imported; you can import the package into your own project and it'll be nice and organized. All you have to do is follow the set-up instructions and it should work!
+   * I've made it so everything in this project shouldn't interfere with your own project when imported; you can import the package into your own project and it'll be nice and organized. All you have to do is follow the set-up instructions and it should work!
 
 * You're welcome to mess around with anything here, by the way. I just thought this was the simplest way to add basic RGB support.
 
