@@ -1,13 +1,23 @@
-# Latest
+# Before you start!
 
-* Note: Visit the [Chroma Animation Guide](https://chroma.razer.com/ChromaGuide/) to find the latest supported plugin for Chroma RGB.
+* This is NOT an official extension by Razer; this is a fork I made to bring it up to speed, since the official is built for the long-dead GM:S 1.4, which is basically impractical to use for making actual games nowadays.
 
-# GameMaker Chroma Extension - GameMaker Extension to control lighting for Razer Chroma
+* The original can be found [HERE](https://github.com/razerofficial/GameMakerChromaExtension).
+
+* Also, **THIS REPOSITORY IS A SIDE PROJECT OF MINE, AND IS NOT A PRIORITY TO UPDATE ATM**.
+   ** I originally updated this for my own personal use, but I thought there might be someone interested in putting Razer support in their own GameMaker project. The system I made for my own game is modular enough to simply tear out a copy and put it in another project, so I thought I'd put it here. It's a bit of a fixer-upper, but I'm going to work on that. :P
+
+* This extension now relies on a seperate object to help it run properly, fittingly named `RGBCHROMA`.
+   ** I've made it so everything in this project shouldn't interfere with your own project when imported; you can import the package into your own project and it'll be nice and organized. All you have to do is follow the set-up instructions and it should work!
+
+* You're welcome to mess around with anything here, by the way. I just thought this was the simplest way to add basic RGB support.
+
+# Artyrian's Expanded GameMaker Razer Chroma Support - Razer Chroma control for GameMaker 2022+
 
 **Table of Contents**
 
 * [See Also](#see-also)
-* [Frameworks supported](#frameworks-supported)
+* [Platforms Required](#frameworks-supported)
 * [Getting Started](#getting-started)
 * [Assets](#assets)
 * [API](#api)
@@ -25,46 +35,36 @@
 - [CChromaEditor](https://github.com/RazerOfficial/CChromaEditor) - C++ native MFC library for playing and editing Chroma animations
 
 <a name="frameworks-supported"></a>
-## Frameworks supported
-- GameMaker 1.4 [download](https://www.yoyogames.com/downloads/gm-studio/release-notes-studio.html)
-- Windows
+## Platforms Required
+- This extension is meant for GameMaker 2022+.
+  - While I DID originally use this back in GMS 2.3+, **use it for 2.3 at your own risk**.
+- Razer Chroma only runs on the __Windows__ platform.
 
 <a name="getting-started"></a>
 ## Getting Started
 
-* Install [Synapse](https://www.razer.com/synapse-3)
+* If you haven't already, go install [Synapse](https://www.razer.com/synapse-3)
 
 * Make sure the Chroma Connect module is installed.
 
 ![image_8](images/image_8.png)
 
-* If you don't have Chroma hardware, you can see Chroma effects with the [Chroma Emulator](https://github.com/razerofficial/ChromaEmulator)
+* NOTE: If you don't have Chroma hardware, you can see Chroma effects with the [Chroma Emulator](https://github.com/razerofficial/ChromaEmulator)
 
-1 Import the [GameMakerChromaExtension.gmez](https://github.com/razerofficial/GameMakerChromaExtension/releases/tag/GMS_1_4) extension
+1. Import the [RazerChromaGameMakerSupport.yymps](hhttps://github.com/TheArtyrian/ExpandedGamemakerChroma/releases) extension by dragging it into the GameMaker window. A window should pop up. (`TODO: Add a custom release of the extension. `)
+   * Make sure you have the project you want open; adding this on the main menu will simply make a new project.
 
-2 Double-click the `ChromaSDK` extension
-
-![image_1](images/image_1.png)
-
-3 On the `Import Resources` tab, expand `Included Files`, select `CChromaEditorLibrary.dll` and click `Import All`
+2. Be sure to click "Add All". This will add all of the things that you'll need to run Razer Chroma.
 
 ![image_2](images/image_2.png)
 
-4 `CChromaEditorLibrary.dll` should appear in your project's `Included Files` folder
- 
-![image_3](images/image_3.png)
-
-5 Double-click a `Chroma` animation to associate the `.chroma` extension with the [CChromaEditor](https://github.com/RazerOfficial/CChromaEditor)
+3. Double-click a `Chroma` animation to associate the `.chroma` extension with the [CChromaEditor](https://github.com/RazerOfficial/CChromaEditor)
 
 ![image_4](images/image_4.png)
 
-6 Once associated, double-click a `Chroma` animation to bring up the animation editor
+4. Once associated, double-click a `Chroma` animation to bring up the animation editor
 
 ![image_5](images/image_5.png)
-
-7 In order to see the lighting animations play, use the `File->Create Application` menu item to create a `Windows` application. After the installer completes, the application will play `Chroma` animations.
- 
-![image_7](images/image_7.png)
 
 <a name="assets"></a>
 ## Assets
