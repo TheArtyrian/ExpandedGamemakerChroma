@@ -19,7 +19,7 @@
 * [See Also](#see-also)
 * [Platforms Required](#frameworks-supported)
 * [Getting Started](#getting-started)
-* [Assets](#assets)
+* [What's Included?](#assets)
 * [API](#api)
 * [Examples](#examples)
 
@@ -43,7 +43,7 @@
 <a name="getting-started"></a>
 ## Getting Started
 
-* If you haven't already, go install [Synapse](https://www.razer.com/synapse-3)
+* If you haven't already, go install [Synapse](https://www.razer.com/synapse-3).
 
 * Make sure the Chroma Connect module is installed.
 
@@ -51,27 +51,31 @@
 
 * NOTE: If you don't have Chroma hardware, you can see Chroma effects with the [Chroma Emulator](https://github.com/razerofficial/ChromaEmulator)
 
-1. Import the [RazerChromaGameMakerSupport.yymps](hhttps://github.com/TheArtyrian/ExpandedGamemakerChroma/releases) extension by dragging it into the GameMaker window. A window should pop up. (`TODO: Add a custom release of the extension. `)
+1. Import the [RazerChromaGameMakerSupport.yymps](hhttps://github.com/TheArtyrian/ExpandedGamemakerChroma/releases) extension by dragging it into the GameMaker window. A window should pop up.
    * Make sure you have the project you want open; adding this on the main menu will simply make a new project.
+
+![image_import](images/image_import.png)
 
 2. Be sure to click "Add All". This will add all of the things that you'll need to run Razer Chroma.
 
-![image_2](images/image_2.png)
+3. You should now have imported everything into your project! Don't worry about clutter; everything is in dedicated folders named "-- RAZER CHROMA --" in the Objects and Scripts folders.
 
-3. Double-click a `Chroma` animation to associate the `.chroma` extension with the [CChromaEditor](https://github.com/RazerOfficial/CChromaEditor)
+![image_layout1](images/image_layout1.png)
 
-![image_4](images/image_4.png)
+![image_layout2](images/image_layout2.png)
 
-4. Once associated, double-click a `Chroma` animation to bring up the animation editor
-
-![image_5](images/image_5.png)
+4. Now, to use RGB in the game, you should put it in the starting room of your project. It will remain there for the entirety of your game being open.
 
 <a name="assets"></a>
-## Assets
+## What's Included?
 
-This extension supports the `Chroma` animation exports from [UE4](https://github.com/razerofficial/UE4ChromaSDK), [Unity](https://github.com/razerofficial/UnityNativeChromaSDK/), and [GameMaker](https://github.com/razerofficial/GameMakerChromaExtension).
-
-Add `Chroma` animation files to the project's `Included Files` to make the animations accessible from `GMS` script.
+- In your included files, you should find:
+  - The `ChromaAppInfo.xml` file. This tells Synapse the information about your game. You can fill out this info using Notepad (I prefer Notepad++, but you do you).
+  - The `CChromaEditorLibrary.dll` file, renamed to `ChromaEngine.dll` as to kinda hint that file should NOT be deleted. Which it shouldn't. It's also the editor for Razer Chroma files, as the original name implies.
+  - A few custom patterns I made to help you out, as well as ones with a `blank_` prefix. These are used to blank all Chroma devices at the start.
+      - Should you want to remove these, see `RGB_MACROS` in the scripts folder (-- RAZER CHROMA -- > Custom Wrapping).
+ 
+- When adding/removing custom Chroma files (including the ones I made), refer to the `RGB_MACROS` script. That's where you can define the macros that will be used to make Chroma run on the custom wrappers I made.
 
 ![image_4](images/image_4.png)
 
