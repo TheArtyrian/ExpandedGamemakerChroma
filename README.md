@@ -20,6 +20,7 @@
 * [Platforms Required](#frameworks-supported)
 * [Getting Started](#getting-started)
 * [What's Included?](#assets)
+* [Custom Wrappers](#wrappers)
 * [API](#api)
 * [Examples](#examples)
 
@@ -28,22 +29,24 @@
 
 **Docs:**
 
-- [Chroma Animation Guide](http://chroma.razer.com/ChromaGuide/) - Visual examples of the Chroma Animation API methods
+- [Chroma Animation Guide](http://chroma.razer.com/ChromaGuide/) - Visual examples of the Chroma Animation API methods.
 
 **Plugins:**
 
-- [CChromaEditor](https://github.com/RazerOfficial/CChromaEditor) - C++ native MFC library for playing and editing Chroma animations
+- [CChromaEditor](https://github.com/RazerOfficial/CChromaEditor) - C++ native MFC library for playing and editing Chroma animations.
 
 <a name="frameworks-supported"></a>
 ## Platforms Required
 - This extension is meant for GameMaker 2022+.
-  - While I DID originally use this back in GMS 2.3+, **use it for 2.3 at your own risk**.
-- Razer Chroma only runs on the __Windows__ platform.
+  - This works as of GameMaker Runtime 2024.4.0.168, the version I currently use in my own projects.
+  - While I DID originally create this system back in the GMS 2.3+ era, **I cannot guarantee it will still work in 2.3+**.
+- Razer Chroma only runs on the __Windows__ platform. Keep this in mind when exporting to other platforms.
+  - A good rule of thumb is to go into the "Included Files" tab of your project and make sure the files only copy to the Windows platform.
 
 <a name="getting-started"></a>
 ## Getting Started
 
-* If you haven't already, go install [Synapse](https://www.razer.com/synapse-3).
+* If you haven't already, go install [Synapse](https://www.razer.com/synapse-3). This is **REQUIRED** for this to even work in the first place!
 
 * Make sure the Chroma Connect module is installed.
 
@@ -70,17 +73,63 @@
 ## What's Included?
 
 - In your included files, you should find:
-  - The `ChromaAppInfo.xml` file. This tells Synapse the information about your game. You can fill out this info using Notepad (I prefer Notepad++, but you do you).
+  - The `ChromaAppInfo.xml` file. This tells Synapse the information about your game. You can fill out this info using a text editor (cough cough use Notepad++ cough cough).
   - The `CChromaEditorLibrary.dll` file, renamed to `ChromaEngine.dll` as to kinda hint that file should NOT be deleted. Which it shouldn't. It's also the editor for Razer Chroma files, as the original name implies.
-  - A few custom patterns I made to help you out, as well as ones with a `blank_` prefix. These are used to blank all Chroma devices at the start.
+  - A few custom patterns I made to help you out, as well as ones with a `blank_` prefix. These are used to blank all Chroma devices at the start - without these, Chroma devices will simply freeze on the last animation they were playing prior to your application's launch.
       - Should you want to remove these, see `RGB_MACROS` in the scripts folder (-- RAZER CHROMA -- > Custom Wrapping).
+      - That said, it'd be wise not to remove any files with the `blank_` prefix, as these are necessary for proper function of this system.
  
 - When adding/removing custom Chroma files (including the ones I made), refer to the `RGB_MACROS` script. That's where you can define the macros that will be used to make Chroma run on the custom wrappers I made.
 
 ![image_4](images/image_4.png)
 
+<a name="wrappers"></a>
+## Custom Wrappers
+
+To make working with Chroma patterns easier, I've created a few GameMaker functions to wrap the raw API functions into something a lot more user-friendly!
+
+* [RGB_MACROS](#Wrapper_RGBMACROS)
+* [chroma_toggle](#Wrapper_CHROMATOGGLE)
+* [chroma_set_all](#Wrapper_CHROMASETALL)
+* [chroma_set_all_loop](#Wrapper_CHROMASETALLLOOP)
+* [chroma_set_anim](#Wrapper_CHROMASETANIM)
+* [chroma_set_anim_loop](#Wrapper_CHROMASETANIMLOOP)
+* [key_to_rgbkey](#Wrapper_KEYTORGBKEY)
+
+Please note these functions only work on `Windows` platforms. The plugin will automatically detect the platform and throw an error message in GameMaker's `Output` window if the OS isn't correct.
+
+<a name="Wrapper_RGBMACROS"></a>
+**RGB_MACROS**
+
+This contains crucial information for the plugin to work properly, including `RZKEY` macros and basic color IDs for simple key coloring (`RZCOLOR`).
+**__When adding new `.chroma` files to your project, use this file to define a macro with their location in Included Files.__**
+
+(Nerd Time: In the original version of this plugin by Razer, all Global data - including `RZKEY` info - was stored in GameMaker's `global.` variable system. With Macros, however, this is no longer necessary, reducing a lot of clutter.)
+
+<a name="Wrapper_CHROMATOGGLE"></a>
+**chroma_toggle**
+
+<a name="Wrapper_CHROMASETALL"></a>
+**chroma_set_all**
+
+<a name="Wrapper_CHROMASETALLLOOP"></a>
+**chroma_set_all_loop**
+
+<a name="Wrapper_CHROMASETANIM"></a>
+**chroma_set_anim**
+
+<a name="Wrapper_CHROMASETANIMLOOP"></a>
+**chroma_set_anim_loop**
+
+<a name="Wrapper_KEYTORGBKEY"></a>
+**key_to_rgbkey**
+
+Converts a GameMaker key value (either from `vk_` constants or `ord()`) to its respective `RZKEY`. Useful for changing what key lights up, should you have remappable controls.
+
 <a name="api"></a>
 ## API
+
+The custom wrapper functions utilize the scripts below. There's not necessarily a reason to worry about these, but if the wrappers don't completely suit your needs, you can use these functions directly.
 
 * [ScriptChromaCloseAnimationName](#ScriptChromaCloseAnimationName)
 * [ScriptChromaCloseComposite](#ScriptChromaCloseComposite)
@@ -110,7 +159,7 @@
 * [ScriptChromaUninit](#ScriptChromaUninit)
 
 
-The extension methods are only available on the `Windows` platform. Use `GMS` to detect the `Windows` os.
+**NOTE:** As with the entire system itself, these functions are only available on the `Windows` platform. Use `GML` to detect the `os_type` for `os_windows` before actually executing script!
 
 ```
 if (os_type == os_windows)
